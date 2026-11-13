@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>منصة المصريين بالخارج — نموذج أولي</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400..700&family=Noto+Naskh+Arabic:wght@400..700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
     :root{
       --papyrus:#edf0f3;--paper:#ffffff;--paper-raised:#ffffff;--ink:#121820;
       --ink-2:#394653;--ink-3:#667482;--ink-4:#96a0aa;--nile:#0c6bb6;
@@ -14,22 +14,22 @@
       --danger:#b4232a;--danger-soft:#fae9ea;--control:#f2f5f7;--focus:#0c6bb6;
       --r-sm:8px;--r-md:14px;--r-lg:22px;--u:4px;
     }
-    *{box-sizing:border-box} body{margin:0;background:var(--papyrus);color:var(--ink);font-family:"Noto Naskh Arabic","Tahoma","Arial",serif;min-height:100vh}
+    *{box-sizing:border-box} body{margin:0;background:var(--papyrus);color:var(--ink);font-family:"Cairo","Noto Sans Arabic","Tahoma","Arial",sans-serif;font-weight:400;line-height:1.75;min-height:100vh;-webkit-font-smoothing:antialiased}
     button,input,select,textarea{font:inherit} button{cursor:pointer}
-    h1,h2,h3,button,.btn,.nav,.mobile-nav,.eyebrow,label,.status,.brand strong,.fact strong,.meta-row strong,.program-time,.service-no{font-family:"Noto Kufi Arabic","Tahoma","Arial",sans-serif;letter-spacing:normal}
-    h1,h2,h3{text-wrap:balance;line-height:1.55}
+    h1,h2,h3,button,.btn,.nav,.mobile-nav,.eyebrow,label,.status,.brand strong,.fact strong,.meta-row strong,.program-time,.service-no{font-family:"Cairo","Noto Sans Arabic","Tahoma","Arial",sans-serif;letter-spacing:-.015em}
+    h1,h2,h3{text-wrap:balance;line-height:1.45;font-weight:700}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     .app{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) 264px;direction:ltr}
     .main,.rail{direction:rtl}
     .rail{border-inline-start:1px solid var(--line);padding:24px 18px;background:var(--papyrus);display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
     .brand{display:block;padding:0 8px 22px;border-bottom:1px solid var(--line-soft)}
-    .brand-logo{display:block;width:190px;max-width:100%;height:auto;margin-bottom:10px}.brand strong{display:block;font-size:14px;color:var(--nile)}.brand span{display:block;font-size:10px;color:var(--ink-3);margin-top:3px}
+    .brand-logo{display:block;width:148px;max-width:100%;aspect-ratio:1;object-fit:contain;border-radius:50%;margin:0 auto 12px;background:#fff}.brand strong{display:block;font-size:14px;color:var(--nile);text-align:center}.brand span{display:block;font-size:10px;color:var(--ink-3);margin-top:3px;text-align:center}
     .nav{display:grid;gap:6px;margin-top:24px}.nav button{border:0;background:transparent;color:var(--ink-2);display:flex;align-items:center;gap:12px;text-align:right;padding:12px;border-radius:var(--r-sm)}
     .nav button:hover{background:var(--line-soft)}.nav button.active{background:var(--teal-soft);color:var(--nile);font-weight:700}
     .nav svg,.topbar svg,.action svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8}
     .rail-help{margin-top:auto;border-top:1px solid var(--line-soft);padding-top:18px}.rail-help button{width:100%;border:1px solid var(--line);background:transparent;color:var(--nile);padding:11px;border-radius:var(--r-sm)}
     .main{min-width:0;padding-bottom:76px}.topbar{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:3px 34px 0;background:rgba(237,240,243,.94);position:sticky;top:0;z-index:5;backdrop-filter:blur(12px);box-shadow:inset 0 3px 0 var(--gold)}
-    .topbar-brand-mobile{display:none;width:118px;height:auto}.topbar-actions{display:flex;gap:8px}.icon-btn{border:1px solid var(--line);background:transparent;color:var(--nile);width:40px;height:40px;border-radius:50%;display:grid;place-items:center}.user-chip{display:flex;align-items:center;gap:10px}.avatar{width:38px;height:38px;border-radius:50%;background:var(--nile);color:white;display:grid;place-items:center;font-weight:700}.user-chip small{display:block;color:var(--ink-3);margin-top:2px}
+    .topbar-brand-mobile{display:none;width:50px;height:50px;object-fit:contain;border-radius:50%;background:#fff}.topbar-actions{display:flex;gap:8px}.icon-btn{border:1px solid var(--line);background:transparent;color:var(--nile);width:40px;height:40px;border-radius:50%;display:grid;place-items:center}.user-chip{display:flex;align-items:center;gap:10px}.avatar{width:38px;height:38px;border-radius:50%;background:var(--nile);color:white;display:grid;place-items:center;font-weight:700}.user-chip small{display:block;color:var(--ink-3);margin-top:2px}
     .content{max-width:1160px;margin:auto;padding:34px}.view{display:none}.view.active{display:block}
     .eyebrow{color:var(--teal);font-size:12px;font-weight:700}.page-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:28px}.page-head h1{font-size:28px;margin:8px 0 7px}.page-head p{margin:0;color:var(--ink-2);max-width:650px;line-height:1.8}
     .btn{border:1px solid var(--line);background:var(--paper-raised);color:var(--nile);padding:11px 17px;border-radius:var(--r-sm);font-weight:700}.btn:hover{border-color:rgba(16,57,93,.35)}.btn.primary{background:var(--nile);color:white;border-color:var(--nile)}.btn.teal{background:var(--teal);color:white;border-color:var(--teal)}.btn.ghost{background:transparent}.btn:focus-visible,.nav button:focus-visible,.icon-btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid color-mix(in srgb,var(--focus) 28%,transparent);outline-offset:2px}
@@ -69,7 +69,7 @@
     @media (max-width:900px){.app{display:block}.rail{display:none}.topbar{height:66px;padding:0 18px}.content{padding:22px 16px}.grid,.flow-layout,.detail-layout,.invest-hero,.news-layout,.donation-layout,.conference-hero{grid-template-columns:1fr}.flow-nav{display:flex;overflow:auto;border:0;border-bottom:1px solid var(--line);padding:0 0 12px;margin-bottom:20px}.flow-nav .flow-step{min-width:138px}.service-grid,.campaign-grid{grid-template-columns:repeat(2,1fr)}.instant-strip{grid-template-columns:repeat(3,1fr)}.instant-intro{grid-column:1/-1}.facts{grid-template-columns:repeat(2,1fr)}.side-note{position:static}.sector-grid{grid-template-columns:1fr 1fr}.sector-block.featured{grid-column:1/-1}.opportunity{grid-template-columns:1fr 1fr}.opportunity .btn{justify-self:start}.ministry-grid{grid-template-columns:repeat(2,1fr)}.mobile-nav{position:fixed;display:flex;overflow-x:auto;bottom:0;left:0;right:0;background:var(--paper-raised);border-top:1px solid var(--line);z-index:9}.mobile-nav button{border:0;background:transparent;padding:10px 4px;color:var(--ink-3);font-size:10px;min-width:72px;flex:1}.mobile-nav button.active{color:var(--nile);font-weight:700}.page-head{align-items:start}.page-head .btn{display:none}}
     @media (max-width:560px){.user-chip div:last-child{display:none}.topbar .eyebrow{display:none}.welcome,.invest-hero,.giving-hero,.conference-hero{padding:24px 20px}.welcome h1,.invest-hero h1,.giving-hero h1,.conference-hero h1{font-size:24px}.service-grid,.form-row,.instant-strip,.sector-grid,.opportunity,.campaign-grid,.launch-band,.ministry-grid{grid-template-columns:1fr}.sector-block.featured{grid-column:auto}.journey-track{font-size:10px}.step strong{font-size:10px}.step small{display:none}.panel{padding:17px}.request-row{grid-template-columns:auto 1fr}.request-row .status{grid-column:2}.quick{grid-template-columns:1fr}.page-head h1,.service-hero h1{font-size:24px}.service-hero,.giving-hero{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}.proposal-banner{align-items:start;flex-direction:column}.proposal-banner .btn{width:100%}.source-panel{align-items:start;flex-direction:column}.amounts,.event-choice{grid-template-columns:1fr}.program-row,.recommendation{grid-template-columns:1fr}.rec-state{text-align:right}}
     .invest-hero h1{letter-spacing:normal}
-    .welcome,.conference-hero,.invest-hero{box-shadow:inset 0 4px 0 var(--gold)}.official-badge{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:#1f1708;padding:7px 10px;border-radius:999px;font-family:"Noto Kufi Arabic","Tahoma",sans-serif;font-size:10px;font-weight:700;margin-bottom:5px;position:relative}.official-badge:before{content:"✓";width:17px;height:17px;border-radius:50%;background:#fff8e8;display:grid;place-items:center}.nav button.active:after{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);margin-inline-start:auto}.action.emergency{background:var(--danger-soft);border-color:rgba(214,33,42,.3);color:var(--danger)}.action.emergency svg{color:var(--danger)}.service-card[data-category~="urgent"]{border-color:rgba(214,33,42,.28);background:linear-gradient(180deg,var(--paper) 0%,var(--danger-soft) 100%)}.service-card[data-category~="urgent"] .service-no,.service-card[data-category~="urgent"] span{color:var(--danger)}.urgent-label{display:inline-flex;background:var(--danger);color:white;padding:5px 8px;border-radius:999px;font-family:"Noto Kufi Arabic","Tahoma",sans-serif;font-size:9px;font-weight:700}
+    .welcome,.conference-hero,.invest-hero{box-shadow:inset 0 4px 0 var(--gold)}.official-badge{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:#1f1708;padding:7px 10px;border-radius:999px;font-family:"Cairo","Noto Sans Arabic","Tahoma",sans-serif;font-size:10px;font-weight:700;margin-bottom:5px;position:relative}.official-badge:before{content:"✓";width:17px;height:17px;border-radius:50%;background:#fff8e8;display:grid;place-items:center}.nav button.active:after{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);margin-inline-start:auto}.action.emergency{background:var(--danger-soft);border-color:rgba(214,33,42,.3);color:var(--danger)}.action.emergency svg{color:var(--danger)}.service-card[data-category~="urgent"]{border-color:rgba(214,33,42,.28);background:linear-gradient(180deg,var(--paper) 0%,var(--danger-soft) 100%)}.service-card[data-category~="urgent"] .service-no,.service-card[data-category~="urgent"] span{color:var(--danger)}.urgent-label{display:inline-flex;background:var(--danger);color:white;padding:5px 8px;border-radius:999px;font-family:"Cairo","Noto Sans Arabic","Tahoma",sans-serif;font-size:9px;font-weight:700}
     @media (max-width:900px){.topbar{padding:3px 18px 0}.topbar-brand-mobile{display:block}.topbar>.eyebrow-wrap{display:none}}
     @media (max-width:900px){.talent-hero,.talent-status{grid-template-columns:1fr}.talent-cycle{grid-template-columns:repeat(3,1fr)}}
     @media (max-width:560px){.talent-hero{padding:24px 20px}.talent-hero h1{font-size:24px}.talent-cycle{grid-template-columns:1fr}.talent-stage{border-inline-start:0;border-top:1px solid var(--line-soft);min-height:auto}.talent-stage:first-child{border-top:0}.criteria-table th:nth-child(2),.criteria-table td:nth-child(2){display:none}}
@@ -116,7 +116,7 @@
   <div class="app">
     <main class="main" id="mainContent" tabindex="-1">
       <header class="topbar">
-        <div class="eyebrow-wrap"><div class="eyebrow">النموذج الأولي — الإصدار 0.1</div></div><img class="topbar-brand-mobile" src="mfa-logo.svg" alt="وزارة الخارجية المصرية">
+        <div class="eyebrow-wrap"><div class="eyebrow">النموذج الأولي — الإصدار 0.1</div></div><img class="topbar-brand-mobile" src="egyptians-abroad-union-logo.jpeg" alt="شعار الاتحاد العام للمصريين في الخارج">
         <div class="topbar-actions">
           <div class="access-toolbar"><button class="access-button" data-go="accessibility">الوصول واللغة</button><button class="icon-btn" data-go="notifications" aria-label="الإشعارات"><svg><use href="#i-bell"/></svg></button></div>
           <div class="user-chip"><div class="avatar">م</div><div><strong>محمد أحمد</strong><small>الرياض، السعودية</small></div></div>
@@ -125,7 +125,7 @@
       <div class="content">
         <section class="view active" id="dashboard">
           <div class="welcome">
-            <div class="official-badge">منصة رسمية بإشراف وزارة الخارجية</div><div class="eyebrow" style="color:#f0d18a">نافذتك إلى مصر</div>
+            <div class="official-badge">مبادرة الاتحاد العام للمصريين في الخارج</div><div class="eyebrow" style="color:#f0d18a">نافذتك إلى مصر</div>
             <h1>أهلًا بك، محمد</h1>
             <p>اعثر على السفارة أو القنصلية المختصة، وتواصل عبر القنوات الرسمية، وشارك في مبادرات وفرص مصر من مكان واحد.</p>
             <div class="welcome-actions"><button class="btn primary" data-go="register">إنشاء حساب موثق</button><button class="btn ghost" data-go="services">استكشاف الخدمات</button><button class="btn ghost" data-go="service-charter">ميثاق المنصة</button></div>
@@ -585,7 +585,7 @@
       </div>
     </main>
     <aside class="rail">
-      <div class="brand"><img class="brand-logo" src="mfa-logo.svg" alt="وزارة الخارجية المصرية"><strong>منصة المصريين بالخارج</strong><span>الخدمات والمشاركة والتواصل أينما كنت</span></div>
+      <div class="brand"><img class="brand-logo" src="egyptians-abroad-union-logo.jpeg" alt="شعار الاتحاد العام للمصريين في الخارج"><strong>منصة المصريين بالخارج</strong><span>الخدمات والمشاركة والتواصل أينما كنت</span></div>
       <nav class="nav" aria-label="التنقل الرئيسي">
         <button class="active" data-go="dashboard"><svg><use href="#i-home"/></svg>الرئيسية</button>
         <button data-go="conference"><svg><use href="#i-calendar"/></svg>المؤتمر السنوي</button>

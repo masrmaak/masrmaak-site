@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>منصة المصريين بالخارج — نموذج أولي</title>
+  <title>الاتحاد العام للمصريين في الخارج — المنصة الرقمية</title>
+  <script>document.documentElement.dataset.concept=new URLSearchParams(location.search).get('concept')||'editorial';</script>
+  <script src="assets/world-locations.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
     :root{
-      --papyrus:#edf0f3;--paper:#ffffff;--paper-raised:#ffffff;--ink:#121820;
-      --ink-2:#394653;--ink-3:#667482;--ink-4:#96a0aa;--nile:#0c6bb6;
-      --nile-2:#084e86;--teal:#236fa8;--teal-soft:#e5f1fa;--gold:#c5923a;
-      --gold-soft:#f7eedf;--flag-red:#d6212a;--line:rgba(10,45,72,.15);--line-soft:rgba(10,45,72,.08);
-      --danger:#b4232a;--danger-soft:#fae9ea;--control:#f2f5f7;--focus:#0c6bb6;
-      --r-sm:8px;--r-md:14px;--r-lg:22px;--u:4px;
+      --papyrus:#f1f1ef;--paper:#ffffff;--paper-raised:#ffffff;--ink:#171719;
+      --ink-2:#44433f;--ink-3:#747168;--ink-4:#9d9a91;--nile:#171719;
+      --nile-2:#0b0b0d;--teal:#8b6b0f;--teal-soft:#f6efd8;--gold:#d4af37;
+      --gold-soft:#f8f1da;--flag-red:#c83232;--line:rgba(23,23,25,.14);--line-soft:rgba(23,23,25,.07);
+      --danger:#a92d32;--danger-soft:#fae9ea;--control:#f5f4f0;--focus:#9a7614;
+      --r-sm:6px;--r-md:8px;--r-lg:12px;--u:4px;
     }
     *{box-sizing:border-box} body{margin:0;background:var(--papyrus);color:var(--ink);font-family:"Cairo","Noto Sans Arabic","Tahoma","Arial",sans-serif;font-weight:400;line-height:1.75;min-height:100vh;-webkit-font-smoothing:antialiased}
     button,input,select,textarea{font:inherit} button{cursor:pointer}
@@ -98,6 +100,81 @@
     @media (max-width:560px){.operating-model,.sla-row,.help-topics,.escalation-path,.support-ticket{grid-template-columns:1fr}.raci-table{display:block;overflow-x:auto}.support-channel{align-items:start;flex-direction:column}}
     @media (max-width:900px){.performance-grid{grid-template-columns:repeat(2,1fr)}.fallback-mode{grid-template-columns:1fr}.command-grid{grid-template-columns:1fr}.launch-check{grid-template-columns:34px 1fr 1fr}}
     @media (max-width:560px){.readiness-score,.performance-grid,.launch-check,.dependency-row{grid-template-columns:1fr}.score-ring{margin:10px 0}.live-event{grid-template-columns:50px 12px 1fr}.live-event:after{right:56px}}
+
+    /* Homepage approval concept — Union identity */
+    #dashboard{--union-black:#0b0b0d;--union-charcoal:#171719;--union-gold:#d4af37;--union-gold-bright:#e6c65c;--union-ivory:#f8f5ec;--union-muted:#6f6b60}
+    body:has(#dashboard.active) .main{background:var(--papyrus)}
+    body:has(#dashboard.active) .topbar{background:rgba(237,240,243,.96);border-bottom-color:var(--line);box-shadow:inset 0 3px 0 #d4af37;color:var(--ink)}
+    body:has(#dashboard.active) .topbar .eyebrow{color:#8b6b0f}
+    body:has(#dashboard.active) .topbar .user-chip small{color:var(--ink-3)}
+    body:has(#dashboard.active) .topbar .avatar{background:#d4af37;color:#0b0b0d}
+    body:has(#dashboard.active) .topbar .icon-btn{border-color:rgba(139,107,15,.28);color:#8b6b0f}
+    body:has(#dashboard.active) .topbar .access-button{background:#fff;border-color:rgba(139,107,15,.28);color:#171719}
+    .union-hero{min-height:440px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:32px;align-items:center;padding:40px 44px;border:0;border-radius:0;background:var(--papyrus);color:var(--union-black);position:relative;overflow:hidden;isolation:isolate;box-shadow:none}
+    .union-hero:before{content:"";position:absolute;inset:-35% 40% 25% -15%;background:radial-gradient(circle,rgba(212,175,55,.14),transparent 62%);z-index:-1}
+    .union-hero:after{content:none}
+    .union-kicker{display:inline-flex;align-items:center;gap:9px;color:#8b6b0f;font-size:12px;font-weight:700;margin-bottom:18px}.union-kicker:before{content:"";width:26px;height:2px;background:var(--union-gold)}
+    .union-hero h1{font-size:clamp(32px,3.8vw,52px);line-height:1.3;letter-spacing:-.04em;margin:0;max-width:680px}.union-hero h1 span{color:var(--union-gold-bright)}
+    .union-hero-copy>p{font-size:16px;line-height:2;color:var(--union-muted);max-width:650px;margin:20px 0 0}
+    .union-hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}.union-hero-actions .btn{padding:13px 21px}.union-hero-actions .primary{background:var(--union-gold);border-color:var(--union-gold);color:var(--union-black)}.union-hero-actions .ghost{background:#fff;color:var(--union-black);border-color:rgba(23,23,23,.18)}
+    .union-seal{position:relative;display:grid;place-items:center;min-height:290px}.union-seal:before,.union-seal:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(212,175,55,.3)}.union-seal:before{width:260px;height:260px}.union-seal:after{display:none}
+    .union-seal img{width:176px;height:176px;object-fit:contain;border-radius:50%;background:#fff;position:relative;z-index:1;box-shadow:0 18px 45px rgba(38,31,14,.18)}
+    .union-seal-tag{position:absolute;bottom:18px;z-index:2;background:#fff;color:var(--union-black);padding:9px 14px;border-radius:999px;font-size:11px;font-weight:700;box-shadow:0 8px 20px rgba(38,31,14,.13)}
+    .portal-search{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;background:#fff;border:1px solid rgba(212,175,55,.4);border-radius:14px;padding:9px 10px 9px 9px;margin:-24px 34px 0;position:relative;z-index:2;box-shadow:0 12px 30px rgba(69,55,20,.1)}.portal-search svg{width:22px;height:22px;fill:none;stroke:var(--union-gold);stroke-width:1.8}.portal-search input{width:100%;border:0;outline:0;background:transparent;padding:12px 0;color:var(--union-black)}.portal-search .btn{background:var(--union-gold);color:var(--union-black);border-color:var(--union-gold)}
+    .home-section{margin-top:52px}.home-section-head{margin-bottom:20px}.home-section-head h2{font-size:25px;margin:0 0 7px;color:var(--union-black)}.home-section-head p{margin:0;color:var(--union-muted);font-size:13px}
+    .gateway-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;grid-template-rows:repeat(2,178px);gap:14px}.gateway-card{border:1px solid rgba(23,23,23,.1);background:#fff;border-radius:16px;padding:22px;text-align:right;color:var(--union-black);display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .2s ease,border-color .2s ease}.gateway-card:hover{transform:translateY(-3px);border-color:rgba(199,154,23,.6)}.gateway-card:first-child{grid-row:1/-1;background:var(--union-ivory);padding:28px}.gateway-card.emergency{background:#fff5f4;border-color:#f0cfcc}.gateway-icon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#f4edd4;color:#8c6900;margin-bottom:auto}.gateway-icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}.gateway-card h3{font-size:17px;margin:14px 0 5px}.gateway-card:first-child h3{font-size:23px}.gateway-card p{font-size:12px;line-height:1.75;color:var(--union-muted);margin:0}.gateway-link{color:#806000;font-size:12px;font-weight:700;margin-top:14px}.gateway-card.emergency .gateway-icon,.gateway-card.emergency .gateway-link{color:#a93631;background:#fde3e1}
+    .union-story{display:grid;grid-template-columns:.85fr 1.15fr;gap:0;border:1px solid rgba(23,23,23,.1);border-radius:22px;overflow:hidden;background:#fff}.union-story-mark{background:var(--union-gold);padding:34px;display:flex;flex-direction:column;justify-content:space-between;color:var(--union-black)}.union-story-mark strong{font-size:56px;line-height:1}.union-story-mark span{font-size:12px;font-weight:700}.union-story-copy{padding:36px}.union-story-copy h2{font-size:27px;margin:0 0 14px}.union-story-copy p{color:var(--union-muted);line-height:1.9;margin:0 0 20px}.union-pill-row{display:flex;flex-wrap:wrap;gap:8px}.union-pill{border:1px solid rgba(23,23,23,.12);padding:8px 11px;border-radius:999px;font-size:11px;font-weight:700;color:var(--union-charcoal)}
+    .member-home{display:grid;grid-template-columns:1.35fr .65fr;gap:14px}.member-home .panel{border-color:rgba(23,23,23,.1);box-shadow:none}.member-home .journey{margin-top:0}.member-quick{background:var(--union-ivory)!important;color:var(--union-black);border-color:rgba(212,175,55,.3)!important}.member-quick h2{color:var(--union-black)}.member-quick p{color:var(--union-muted);font-size:12px}.member-quick .btn{width:100%;margin-top:14px;background:var(--union-gold);border-color:var(--union-gold);color:var(--union-black)}
+    @media (max-width:900px){.union-hero{grid-template-columns:1fr;padding:32px;min-height:auto}.union-seal{min-height:230px}.union-seal:before{width:210px;height:210px}.union-seal img{width:148px;height:148px}.portal-search{margin:-20px 18px 0}.gateway-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gateway-card,.gateway-card:first-child{min-height:190px;grid-row:auto}.gateway-card:first-child{grid-column:1/-1}.union-story,.member-home{grid-template-columns:1fr}}
+    @media (max-width:560px){.union-hero{padding:26px 20px;border-radius:0}.union-hero h1{font-size:30px}.union-hero-copy>p{font-size:14px}.union-seal{min-height:195px}.union-seal:before{width:176px;height:176px}.union-seal img{width:126px;height:126px}.portal-search{grid-template-columns:auto 1fr;margin:-16px 10px 0}.portal-search .btn{grid-column:1/-1;width:100%}.gateway-grid{grid-template-columns:1fr}.gateway-card:first-child{grid-column:auto}.union-story-copy,.union-story-mark{padding:24px}.union-story-mark strong{font-size:44px}.home-section{margin-top:40px}}
+
+    /* Concept A — Editorial Institutional */
+    html[data-concept="editorial"] .union-hero{grid-template-columns:minmax(0,1.55fr) minmax(190px,.45fr);min-height:410px;padding:54px 64px;border-inline-start:4px solid var(--union-gold);background:#f6f6f4}
+    html[data-concept="editorial"] .union-hero-copy{max-width:760px}
+    html[data-concept="editorial"] .union-kicker{letter-spacing:.01em}
+    html[data-concept="editorial"] .union-hero h1{font-size:clamp(36px,4.2vw,56px);max-width:760px}
+    html[data-concept="editorial"] .union-hero h1 br{display:none}
+    html[data-concept="editorial"] .union-seal{min-height:230px;align-self:end}
+    html[data-concept="editorial"] .union-seal:before{display:none}
+    html[data-concept="editorial"] .union-seal img{width:138px;height:138px;box-shadow:0 12px 30px rgba(38,31,14,.12)}
+    html[data-concept="editorial"] .union-seal-tag{position:static;margin-top:152px;background:transparent;box-shadow:none;border-top:1px solid rgba(139,107,15,.25);border-radius:0;padding:12px 0 0;color:#6f5520}
+    html[data-concept="editorial"] .portal-search{max-width:860px;margin:-22px 64px 0 auto;border-radius:4px}
+    html[data-concept="editorial"] .gateway-card{border-radius:4px}
+    html[data-concept="editorial"] .gateway-card:first-child{background:#fff;border-top:3px solid var(--union-gold)}
+
+    /* Concept B — Global Community */
+    html[data-concept="community"] .union-hero{grid-template-columns:1fr;min-height:570px;text-align:center;padding:44px 32px 72px;background:linear-gradient(180deg,#f8f5ec 0%,var(--papyrus) 100%)}
+    html[data-concept="community"] .union-seal{order:-1;min-height:205px}
+    html[data-concept="community"] .union-seal:before{width:196px;height:196px;border-color:rgba(212,175,55,.45)}
+    html[data-concept="community"] .union-seal img{width:142px;height:142px}
+    html[data-concept="community"] .union-seal-tag{bottom:0}
+    html[data-concept="community"] .union-hero-copy{max-width:780px;margin:0 auto}
+    html[data-concept="community"] .union-kicker{justify-content:center}
+    html[data-concept="community"] .union-kicker:before{display:none}
+    html[data-concept="community"] .union-hero h1{max-width:none;font-size:clamp(34px,4vw,54px)}
+    html[data-concept="community"] .union-hero h1 br{display:none}
+    html[data-concept="community"] .union-hero-copy>p{margin:16px auto 0;max-width:690px}
+    html[data-concept="community"] .union-hero-actions{justify-content:center}
+    html[data-concept="community"] .portal-search{max-width:920px;margin:-34px auto 0;width:calc(100% - 48px);border-radius:999px;padding-inline:18px}
+    html[data-concept="community"] .portal-search .btn{border-radius:999px;padding-inline:24px}
+    html[data-concept="community"] .gateway-grid{grid-template-columns:repeat(5,1fr);grid-template-rows:220px}
+    html[data-concept="community"] .gateway-card,html[data-concept="community"] .gateway-card:first-child{grid-row:auto;grid-column:auto;min-height:220px;text-align:center;align-items:center;padding:22px 16px}
+    html[data-concept="community"] .gateway-card:first-child h3{font-size:17px}
+    html[data-concept="community"] .gateway-icon{margin-inline:auto}
+    @media (max-width:900px){html[data-concept="editorial"] .union-hero{grid-template-columns:1fr;padding:38px 32px}html[data-concept="editorial"] .union-seal{display:none}html[data-concept="editorial"] .portal-search{margin:-20px 18px 0}html[data-concept="community"] .gateway-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}html[data-concept="community"] .gateway-card,html[data-concept="community"] .gateway-card:first-child{min-height:190px}html[data-concept="community"] .gateway-card:first-child{grid-column:1/-1}}
+    @media (max-width:560px){html[data-concept="editorial"] .union-hero{padding:30px 20px}html[data-concept="editorial"] .portal-search{border-radius:10px;margin:-16px 10px 0}html[data-concept="community"] .union-hero{min-height:auto;padding:28px 20px 56px}html[data-concept="community"] .portal-search{width:calc(100% - 20px);border-radius:16px}html[data-concept="community"] .gateway-grid{grid-template-columns:1fr}html[data-concept="community"] .gateway-card:first-child{grid-column:auto}}
+    .page-head{border-inline-start:3px solid var(--gold);padding-inline-start:18px}.panel,.service-card,.opportunity-list,.news-stack,.notification-list{box-shadow:none}.panel:hover,.service-card:hover{border-color:rgba(139,107,15,.28)}.nav button.active{background:var(--gold-soft);color:var(--ink)}.nav button.active:after{background:var(--gold)}.btn.primary{background:var(--ink);border-color:var(--ink);color:#fff}.btn.teal{background:var(--teal);border-color:var(--teal);color:#fff}.filter.active{background:var(--ink);border-color:var(--ink)}
+    .service-hero,.invest-hero,.giving-hero,.conference-hero,.talent-hero,.account-hero{background:var(--gold-soft);color:var(--ink);border:1px solid rgba(139,107,15,.2);border-inline-start:4px solid var(--gold);border-radius:var(--r-md);box-shadow:none}
+    .service-hero p,.invest-hero p,.giving-hero p,.conference-hero p,.talent-hero p{color:var(--ink-2)}
+    .service-hero .eyebrow,.invest-hero .eyebrow,.giving-hero .eyebrow,.conference-hero .eyebrow,.talent-hero .eyebrow{color:var(--teal)!important}
+    .service-hero .btn,.invest-hero .btn.primary,.giving-hero .btn,.conference-hero .btn.primary,.talent-hero .btn.primary{background:var(--ink);border-color:var(--ink);color:#fff}
+    .invest-hero .btn.ghost,.conference-hero .btn.ghost,.talent-hero .btn.ghost{background:#fff;border-color:rgba(23,23,25,.16);color:var(--ink)}
+    .emergency-hero{background:var(--danger-soft);color:var(--ink);border:1px solid rgba(169,45,50,.2);border-inline-start:4px solid var(--danger);border-radius:var(--r-md);box-shadow:none}.emergency-hero p{color:var(--ink-2)}
+    .rail{overflow:hidden;padding:18px 14px;display:flex}.rail .brand{display:flex;align-items:center;gap:11px;padding:0 4px 16px;flex:none;background:var(--papyrus);position:relative;z-index:2}.rail .brand-logo{width:62px;height:62px;margin:0;flex:none}.rail .brand strong{text-align:right;font-size:11px;line-height:1.55;color:var(--ink)}.rail .brand span{text-align:right;font-size:9px}.nav-shell{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:10px 2px;scrollbar-width:thin}.nav{margin-top:0;gap:4px}.nav button{width:100%;padding:9px 10px;font-size:11px;border-radius:var(--r-sm)}.nav-home{font-size:12px!important}.nav-search{border:1px solid rgba(139,107,15,.2)!important;background:#fff!important;margin-bottom:4px}.nav-group{border-top:1px solid var(--line-soft);padding:5px 0}.nav-group summary{list-style:none;cursor:pointer;padding:9px 10px;color:var(--ink-3);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:space-between}.nav-group summary::-webkit-details-marker{display:none}.nav-group summary:after{content:"+";font:600 16px/1 Arial;color:var(--teal)}.nav-group[open] summary{color:var(--ink)}.nav-group[open] summary:after{content:"−"}.nav-group>div{display:grid;gap:2px;padding:0 4px 5px}.nav-group button{padding-inline-start:16px}.rail-help{flex:none;display:grid;grid-template-columns:1fr;gap:5px;padding-top:10px}.rail-help button{padding:9px;font-size:10px}.rail-help #adminPortalToggle{background:var(--ink);border-color:var(--ink);color:#fff}.admin-nav-head{background:var(--gold-soft);border-inline-start:3px solid var(--gold);padding:12px;margin:0 2px 8px}.admin-nav-head span{display:block;color:var(--teal);font-size:9px}.admin-nav-head strong{display:block;font-size:12px;margin-top:3px}.portal-exit{width:calc(100% - 4px);margin:8px 2px;border:1px solid var(--line);background:#fff;color:var(--ink);padding:10px;border-radius:var(--r-sm);font-weight:700;font-size:10px}.mobile-more{position:fixed;inset:auto 0 0;z-index:20;background:#fff;border-top:1px solid var(--line);border-radius:18px 18px 0 0;padding:18px 16px 88px;box-shadow:0 -18px 50px rgba(23,23,25,.16)}.mobile-more-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.mobile-more-head strong{font-size:18px}.mobile-more-head button{width:40px;height:40px;border:1px solid var(--line);background:var(--control);border-radius:50%;font-size:22px}.mobile-more-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.mobile-more-grid button{border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:13px;border-radius:var(--r-sm);text-align:right;font-weight:700}.mobile-more[hidden]{display:none}@media(min-width:901px){.mobile-more{display:none!important}}
+    /* Accessible global type scale */
+    body{font-size:16px}.app{grid-template-columns:minmax(0,1fr) 300px}.rail .brand{gap:12px}.rail .brand-logo{width:68px;height:68px}.rail .brand strong{font-size:14px;line-height:1.55}.rail .brand span{font-size:12px}.nav button{min-height:44px;padding:10px 12px;font-size:15px}.nav-home{font-size:16px!important}.nav-group summary{min-height:44px;padding:11px 12px;font-size:14px}.nav-group summary:after{font-size:19px}.rail-help button,.portal-exit{min-height:44px;font-size:14px}.admin-nav-head span{font-size:12px}.admin-nav-head strong{font-size:15px}.btn{min-height:44px;font-size:14px}.eyebrow{font-size:13px}.page-head h1{font-size:32px}.page-head p{font-size:15px}.panel h2{font-size:19px}.panel-sub{font-size:14px}.field label{font-size:14px}.field input,.field select,.field textarea{font-size:16px;min-height:46px}.hint{font-size:12px}.status{font-size:12px}.service-card h3{font-size:17px}.service-card p,.sector-block p,.campaign p,.news-item p,.opportunity p{font-size:14px}.meta-row,.check-list li,.number-list li{font-size:14px}.request-row strong{font-size:15px}.request-row p{font-size:13px}.fact small,.opp-meta small{font-size:13px}.fact strong,.opp-meta strong{font-size:15px}.mobile-nav button{min-height:56px;font-size:12px}.mobile-more-grid button{min-height:48px;font-size:14px}
+    small{font-size:13px}table th,table td{font-size:13px!important}.admin-note,.boundary-note,.privacy-note,.rights-box{font-size:13px}.text-link{font-size:14px}.source-line{font-size:12px}
+    @media(max-width:1100px) and (min-width:901px){.app{grid-template-columns:minmax(0,1fr) 280px}.rail .brand-logo{width:60px;height:60px}.rail .brand strong{font-size:13px}}
   </style>
 </head>
 <body>
@@ -116,28 +193,51 @@
   <div class="app">
     <main class="main" id="mainContent" tabindex="-1">
       <header class="topbar">
-        <div class="eyebrow-wrap"><div class="eyebrow">النموذج الأولي — الإصدار 0.1</div></div><img class="topbar-brand-mobile" src="egyptians-abroad-union-logo.jpeg" alt="شعار الاتحاد العام للمصريين في الخارج">
+        <div class="eyebrow-wrap"><div class="eyebrow">النموذج الأولي — الإصدار 0.1</div></div><img class="topbar-brand-mobile" src="assets/egyptians-abroad-union-logo.jpeg" alt="شعار الاتحاد العام للمصريين في الخارج">
         <div class="topbar-actions">
           <div class="access-toolbar"><button class="access-button" data-go="accessibility">الوصول واللغة</button><button class="icon-btn" data-go="notifications" aria-label="الإشعارات"><svg><use href="#i-bell"/></svg></button></div>
-          <div class="user-chip"><div class="avatar">م</div><div><strong>محمد أحمد</strong><small>الرياض، السعودية</small></div></div>
+          <a class="user-chip" href="login.html" style="text-decoration:none;color:inherit"><div class="avatar">د</div><div><strong>تسجيل الدخول</strong><small>عضو · مؤسسة · إدارة</small></div></a>
         </div>
       </header>
       <div class="content">
         <section class="view active" id="dashboard">
-          <div class="welcome">
-            <div class="official-badge">مبادرة الاتحاد العام للمصريين في الخارج</div><div class="eyebrow" style="color:#f0d18a">نافذتك إلى مصر</div>
-            <h1>أهلًا بك، محمد</h1>
-            <p>اعثر على السفارة أو القنصلية المختصة، وتواصل عبر القنوات الرسمية، وشارك في مبادرات وفرص مصر من مكان واحد.</p>
-            <div class="welcome-actions"><button class="btn primary" data-go="register">إنشاء حساب موثق</button><button class="btn ghost" data-go="services">استكشاف الخدمات</button><button class="btn ghost" data-go="service-charter">ميثاق المنصة</button></div>
-          </div>
-          <section class="instant-strip" aria-label="خدمات فورية دون تسجيل">
-            <div class="instant-intro"><strong>خدمات فورية دون تسجيل</strong><span>معلومات ومساعدات لا تحتاج إلى حساب موثق.</span></div>
-            <button class="instant-item" data-go="consular-24"><b>القنصليات 24</b><small>توجيه ومساندة عاجلة ←</small></button>
-            <button class="instant-item" data-go="services"><b>إرشادات قنصلية</b><small>انتقل للمصدر الرسمي ←</small></button>
-            <button class="instant-item" data-go="new-request"><b>دليل السفارات</b><small>العنوان والتواصل ←</small></button>
+          <section class="union-hero" aria-labelledby="unionHomeTitle">
+            <div class="union-hero-copy">
+              <div class="union-kicker">المنصة الرقمية للاتحاد العام للمصريين في الخارج</div>
+              <h1 id="unionHomeTitle">مصر أقرب إليك،<br><span>أينما كنت.</span></h1>
+              <p>بوابتك للتواصل والمشاركة والاستثمار والوصول إلى الجهات والخدمات المعتمدة للمصريين حول العالم.</p>
+              <div class="union-hero-actions"><button class="btn primary" data-go="register">انضم إلى مجتمع المصريين بالخارج</button><button class="btn ghost" data-go="services">استكشف المنصة</button></div>
+            </div>
+            <div class="union-seal" aria-label="هوية الاتحاد العام للمصريين في الخارج">
+              <img src="assets/egyptians-abroad-union-logo.jpeg" alt="شعار الاتحاد العام للمصريين في الخارج">
+              <span class="union-seal-tag">اتحاد واحد · مجتمع عالمي</span>
+            </div>
           </section>
-          <div class="grid" style="margin-top:20px">
-            <section class="panel journey"><h2>متابعتك الحالية</h2><p class="panel-sub">مقترح لتحسين التواصل القنصلي · رقم FOL-20481</p>
+
+          <form class="portal-search" role="search" onsubmit="event.preventDefault();go('services')">
+            <svg aria-hidden="true"><use href="#i-search"/></svg>
+            <label class="sr-only" for="homeSearch">ابحث في المنصة</label><input id="homeSearch" placeholder="ابحث عن سفارة، خدمة، فرصة استثمارية أو مبادرة">
+            <button class="btn" type="submit">بحث</button>
+          </form>
+
+          <section class="home-section" aria-labelledby="gatewayTitle">
+            <div class="home-section-head"><h2 id="gatewayTitle">ابدأ من احتياجك</h2><p>مسارات واضحة تختصر عليك الوصول إلى الجهة أو الفرصة المناسبة.</p></div>
+            <div class="gateway-grid">
+              <button class="gateway-card" data-go="new-request"><span class="gateway-icon"><svg><use href="#i-search"/></svg></span><h3>السفارات والقنصليات</h3><p>حدد دولتك ومدينتك للوصول إلى بيانات البعثة المختصة وقنواتها المعتمدة.</p><span class="gateway-link">اعثر على الجهة المختصة ←</span></button>
+              <button class="gateway-card" data-go="investment"><span class="gateway-icon"><svg><use href="#i-grid"/></svg></span><h3>الاستثمار والشراكات</h3><p>فرص موثقة وشركاء داخل مصر.</p><span class="gateway-link">استكشف الفرص ←</span></button>
+              <button class="gateway-card" data-go="conference"><span class="gateway-icon"><svg><use href="#i-calendar"/></svg></span><h3>المؤتمر السنوي</h3><p>شارك في الحدث الذي يجمع مصر بأبنائها.</p><span class="gateway-link">تعرف إلى المؤتمر ←</span></button>
+              <button class="gateway-card" data-go="community"><span class="gateway-icon"><svg><use href="#i-user"/></svg></span><h3>الجاليات والكفاءات</h3><p>شبكة عالمية للخبرات والمبادرات.</p><span class="gateway-link">انضم إلى الشبكة ←</span></button>
+              <button class="gateway-card emergency" data-go="consular-24"><span class="gateway-icon"><svg><use href="#i-help"/></svg></span><h3>مساعدة عاجلة</h3><p>توجيه سريع عند وجود خطر أو حالة إنسانية.</p><span class="gateway-link">ابدأ الآن ←</span></button>
+            </div>
+          </section>
+
+          <section class="home-section union-story" aria-labelledby="unionStoryTitle">
+            <div class="union-story-mark"><strong>مصر</strong><span>وطن يجمع المصريين حول العالم</span></div>
+            <div class="union-story-copy"><h2 id="unionStoryTitle">اتحاد يجمعنا، ومنصة تمكّننا</h2><p>مساحة موحدة تربط المصريين بالخارج بوطنهم وببعضهم، وتحول الخبرات والأفكار والمبادرات إلى أثر حقيقي.</p><div class="union-pill-row"><span class="union-pill">تواصل موثوق</span><span class="union-pill">فرص واستثمار</span><span class="union-pill">كفاءات مصرية</span><span class="union-pill">مشاركة مجتمعية</span></div></div>
+          </section>
+
+          <section class="home-section" aria-labelledby="memberTitle"><div class="home-section-head"><h2 id="memberTitle">مساحتك الشخصية</h2><p>تابع مشاركاتك وطلباتك من مكان واحد.</p></div><div class="member-home">
+            <section class="panel journey"><h2>متابعتك الحالية</h2><p class="panel-sub">مقترح لتحسين التواصل · رقم FOL-20481</p>
               <div class="journey-track">
                 <div class="step done"><div class="step-dot">✓</div><strong>تم الاستلام</strong><small>12 يوليو</small></div>
                 <div class="step current"><div class="step-dot">2</div><strong>تحديد الجهة</strong><small>قيد التنفيذ</small></div>
@@ -146,16 +246,7 @@
               </div>
               <div style="margin-top:22px;display:flex;justify-content:flex-start"><button class="btn" data-go="tracking">عرض تفاصيل المتابعة</button></div>
             </section>
-            <section class="panel"><h2>إجراءات سريعة</h2><div class="quick">
-              <button class="action" data-go="new-request"><svg><use href="#i-search"/></svg><span>اعثر على القنصلية</span></button>
-              <button class="action" data-go="services"><svg><use href="#i-grid"/></svg><span>دليل الخدمات</span></button>
-              <button class="action" data-go="new-request"><svg><use href="#i-calendar"/></svg><span>الموقع الرسمي والمواعيد</span></button>
-              <button class="action emergency" data-go="consular-24"><svg><use href="#i-help"/></svg><span>مساعدة عاجلة</span></button>
-            </div></section>
-          </div>
-          <section class="panel" style="margin-top:20px"><h2>متابعاتك الأخيرة</h2><div class="request-list">
-            <div class="request-row"><div class="file-icon">01</div><div><strong>مقترح لتحسين التواصل القنصلي</strong><p>آخر تحديث: اليوم، 10:40 صباحًا</p></div><span class="status">تحديد الجهة</span></div>
-            <div class="request-row"><div class="file-icon">02</div><div><strong>استفسار عن فرصة استثمارية</strong><p>آخر تحديث: 10 يوليو</p></div><span class="status teal">تم الرد</span></div>
+            <aside class="panel member-quick"><h2>أهلًا بك، محمد</h2><p>أكمل ملفك لتصلك الفرص والمبادرات الأقرب إلى خبرتك وموقعك.</p><button class="btn" data-go="account">استكمال الملف الشخصي</button></aside>
           </div></section>
         </section>
 
@@ -585,40 +676,64 @@
       </div>
     </main>
     <aside class="rail">
-      <div class="brand"><img class="brand-logo" src="egyptians-abroad-union-logo.jpeg" alt="شعار الاتحاد العام للمصريين في الخارج"><strong>منصة المصريين بالخارج</strong><span>الخدمات والمشاركة والتواصل أينما كنت</span></div>
-      <nav class="nav" aria-label="التنقل الرئيسي">
-        <button class="active" data-go="dashboard"><svg><use href="#i-home"/></svg>الرئيسية</button>
-        <button data-go="conference"><svg><use href="#i-calendar"/></svg>المؤتمر السنوي</button>
-        <button data-go="talent-conference"><svg><use href="#i-user"/></svg>مؤتمر الكفاءات</button>
-        <button data-go="services"><svg><use href="#i-grid"/></svg>دليل الخدمات</button>
-        <button data-go="investment"><svg><use href="#i-grid"/></svg>الاستثمار والشراكات</button>
-        <button data-go="news"><svg><use href="#i-file"/></svg>الأخبار الذكية</button>
-        <button data-go="giving"><svg><use href="#i-help"/></svg>العطاء والتبرعات</button>
-        <button data-go="community"><svg><use href="#i-user"/></svg>الجاليات والمشاورات</button>
-        <button data-go="consular-24"><svg><use href="#i-help"/></svg>القنصليات 24</button>
-        <button data-go="new-request"><svg><use href="#i-search"/></svg>دليل السفارات</button>
-        <button data-go="tracking"><svg><use href="#i-file"/></svg>متابعاتي</button>
-        <button data-go="account"><svg><use href="#i-user"/></svg>حسابي</button>
-        <button data-go="accessibility"><svg><use href="#i-help"/></svg>الوصول واللغة</button>
-        <button data-go="service-charter"><svg><use href="#i-file"/></svg>ميثاق المنصة</button>
-        <button data-go="ministry-ops"><svg><use href="#i-grid"/></svg>لوحة التشغيل</button>
-        <button data-go="consular-24-ops"><svg><use href="#i-grid"/></svg>مركز العمليات</button>
-        <button data-go="content-ops"><svg><use href="#i-file"/></svg>إدارة المحتوى</button>
-        <button data-go="talent-ops"><svg><use href="#i-user"/></svg>إدارة الكفاءات</button>
-        <button data-go="community-ops"><svg><use href="#i-grid"/></svg>إدارة الجاليات</button>
-        <button data-go="security-ops"><svg><use href="#i-help"/></svg>الأمن والمخاطر</button>
-        <button data-go="operating-model"><svg><use href="#i-grid"/></svg>نموذج التشغيل</button>
-        <button data-go="launch-readiness"><svg><use href="#i-calendar"/></svg>جاهزية التدشين</button>
-      </nav>
-      <div class="rail-help"><button data-go="help-center">مركز المساعدة</button></div>
+      <div class="brand"><img class="brand-logo" src="assets/egyptians-abroad-union-logo.jpeg" alt="شعار الاتحاد العام للمصريين في الخارج"><div><strong>الاتحاد العام للمصريين في الخارج</strong><span>المنصة الرقمية</span></div></div>
+      <div class="nav-shell" id="publicNav">
+        <nav class="nav" aria-label="التنقل الرئيسي">
+          <button class="active nav-home" data-go="dashboard"><svg><use href="#i-home"/></svg>الرئيسية</button>
+          <button class="nav-search" data-go="services"><svg><use href="#i-search"/></svg>البحث الشامل</button>
+          <details class="nav-group" open><summary>الخدمات والمساندة</summary><div>
+            <button data-go="services"><svg><use href="#i-grid"/></svg>دليل الخدمات</button>
+            <button data-go="new-request"><svg><use href="#i-search"/></svg>دليل السفارات</button>
+            <button data-go="consular-24"><svg><use href="#i-help"/></svg>القنصليات 24</button>
+            <button data-go="tracking"><svg><use href="#i-file"/></svg>متابعاتي</button>
+          </div></details>
+          <details class="nav-group"><summary>المشاركة والمجتمع</summary><div>
+            <button data-go="conference"><svg><use href="#i-calendar"/></svg>المؤتمر السنوي</button>
+            <button data-go="talent-conference"><svg><use href="#i-user"/></svg>مؤتمر الكفاءات</button>
+            <button data-go="community"><svg><use href="#i-user"/></svg>الجاليات والمشاورات</button>
+            <button data-go="giving"><svg><use href="#i-help"/></svg>العطاء والتبرعات</button>
+          </div></details>
+          <details class="nav-group"><summary>الفرص والمعرفة</summary><div>
+            <button data-go="investment"><svg><use href="#i-grid"/></svg>الاستثمار والشراكات</button>
+            <button data-go="news"><svg><use href="#i-file"/></svg>الأخبار الذكية</button>
+          </div></details>
+          <details class="nav-group"><summary>الحساب والدعم</summary><div>
+            <button data-go="account"><svg><use href="#i-user"/></svg>حسابي</button>
+            <button data-go="notifications"><svg><use href="#i-bell"/></svg>الإشعارات</button>
+            <button data-go="accessibility"><svg><use href="#i-help"/></svg>الوصول واللغة</button>
+            <button data-go="service-charter"><svg><use href="#i-file"/></svg>ميثاق المنصة</button>
+          </div></details>
+        </nav>
+      </div>
+      <div class="nav-shell admin-nav" id="adminNav" hidden>
+        <div class="admin-nav-head"><span>مساحة مخوّلة</span><strong>بوابة إدارة الاتحاد</strong></div>
+        <nav class="nav" aria-label="بوابة إدارة الاتحاد">
+          <button data-go="ministry-ops"><svg><use href="#i-grid"/></svg>لوحة التشغيل</button>
+          <button data-go="consular-24-ops"><svg><use href="#i-grid"/></svg>مركز العمليات</button>
+          <button data-go="content-ops"><svg><use href="#i-file"/></svg>إدارة المحتوى</button>
+          <button data-go="talent-ops"><svg><use href="#i-user"/></svg>إدارة الكفاءات</button>
+          <button data-go="community-ops"><svg><use href="#i-grid"/></svg>إدارة الجاليات</button>
+          <button data-go="security-ops"><svg><use href="#i-help"/></svg>الأمن والمخاطر</button>
+          <button data-go="operating-model"><svg><use href="#i-grid"/></svg>نموذج التشغيل</button>
+          <button data-go="launch-readiness"><svg><use href="#i-calendar"/></svg>جاهزية التدشين</button>
+        </nav>
+        <button class="portal-exit" id="exitAdminPortal">العودة إلى منصة المستخدم</button>
+      </div>
+      <div class="rail-help"><button id="adminPortalToggle">بوابة إدارة الاتحاد</button><button data-go="help-center">مركز المساعدة</button></div>
     </aside>
-    <nav class="mobile-nav" aria-label="التنقل على الهاتف"><button class="active" data-go="dashboard">الرئيسية</button><button data-go="account">حسابي</button><button data-go="conference">المؤتمر</button><button data-go="talent-conference">الكفاءات</button><button data-go="community">الجاليات</button><button data-go="services">الخدمات</button><button data-go="investment">استثمار</button><button data-go="news">الأخبار</button><button data-go="giving">العطاء</button><button data-go="consular-24">طوارئ 24</button><button data-go="new-request">السفارات</button><button data-go="tracking">متابعاتي</button></nav>
+    <nav class="mobile-nav" aria-label="التنقل على الهاتف"><button class="active" data-go="dashboard">الرئيسية</button><button data-go="services">الخدمات</button><button data-go="new-request">السفارات</button><button data-go="community">المشاركة</button><button id="mobileMore" type="button">المزيد</button></nav>
+    <div class="mobile-more" id="mobileMorePanel" hidden><div class="mobile-more-head"><strong>المزيد</strong><button id="closeMobileMore" type="button" aria-label="إغلاق">×</button></div><div class="mobile-more-grid"><button data-go="conference">المؤتمر السنوي</button><button data-go="talent-conference">مؤتمر الكفاءات</button><button data-go="investment">الاستثمار</button><button data-go="news">الأخبار</button><button data-go="giving">العطاء</button><button data-go="consular-24">القنصليات 24</button><button data-go="tracking">متابعاتي</button><button data-go="account">حسابي</button><button data-go="help-center">المساعدة</button></div></div>
   </div>
   <script>
     const views=[...document.querySelectorAll('.view')];
     const navButtons=[...document.querySelectorAll('[data-go]')];
-    function go(id){views.forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.nav button,.mobile-nav button').forEach(b=>b.classList.toggle('active',b.dataset.go===id));window.scrollTo({top:0,behavior:'smooth'});}
+    function go(id){views.forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.nav button,.mobile-nav button').forEach(b=>b.classList.toggle('active',b.dataset.go===id));const activeNav=document.querySelector(`.nav button[data-go="${id}"]`);if(activeNav?.closest('details'))activeNav.closest('details').open=true;const morePanel=document.getElementById('mobileMorePanel');if(morePanel)morePanel.hidden=true;window.scrollTo({top:0,behavior:'smooth'});}
     navButtons.forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+    const publicNav=document.getElementById('publicNav'),adminNav=document.getElementById('adminNav'),adminPortalToggle=document.getElementById('adminPortalToggle');
+    document.querySelectorAll('#publicNav .nav-group').forEach(group=>group.addEventListener('toggle',()=>{if(group.open)document.querySelectorAll('#publicNav .nav-group').forEach(other=>{if(other!==group)other.open=false;});}));
+    adminPortalToggle.addEventListener('click',()=>{publicNav.hidden=true;adminNav.hidden=false;adminPortalToggle.hidden=true;go('ministry-ops');});
+    document.getElementById('exitAdminPortal').addEventListener('click',()=>{adminNav.hidden=true;publicNav.hidden=false;adminPortalToggle.hidden=false;go('dashboard');});
+    const mobileMorePanel=document.getElementById('mobileMorePanel');document.getElementById('mobileMore').addEventListener('click',()=>mobileMorePanel.hidden=!mobileMorePanel.hidden);document.getElementById('closeMobileMore').addEventListener('click',()=>mobileMorePanel.hidden=true);document.addEventListener('keydown',event=>{if(event.key==='Escape')mobileMorePanel.hidden=true;});
     const serviceCards=[...document.querySelectorAll('.service-card')];
     const serviceFilters=[...document.querySelectorAll('.filter')];
     let activeCategory='all';
@@ -641,11 +756,37 @@
     document.getElementById('documentFile').addEventListener('change',e=>document.getElementById('uploadStatus').classList.toggle('show',e.target.files.length>0));
     document.getElementById('finishVerify').addEventListener('click',()=>{alert('تم إرسال بياناتك للتحقق. هذا نموذج تجريبي ولا تُحفظ أي بيانات.');go('account');});
     const missionData={sa:{regions:{"الرياض":["الرياض","الخرج"],"المنطقة الغربية":["جدة","مكة المكرمة","المدينة المنورة"]},missions:{"الرياض":{name:"سفارة جمهورية مصر العربية في الرياض",scope:"تخدم منطقة الرياض والمدن الواقعة ضمن نطاقها القنصلي.",time:"توقيت الرياض"},"الخرج":{name:"سفارة جمهورية مصر العربية في الرياض",scope:"الخرج ضمن نطاق الاختصاص القنصلي للبعثة المحددة تجريبيًا.",time:"توقيت الرياض"},"جدة":{name:"القنصلية العامة لجمهورية مصر العربية في جدة",scope:"تخدم جدة ومدن المنطقة الغربية وفق النطاق المعتمد.",time:"توقيت جدة"},"مكة المكرمة":{name:"القنصلية العامة لجمهورية مصر العربية في جدة",scope:"مكة المكرمة ضمن النطاق التجريبي للقنصلية العامة في جدة.",time:"توقيت مكة المكرمة"},"المدينة المنورة":{name:"القنصلية العامة لجمهورية مصر العربية في جدة",scope:"المدينة المنورة ضمن النطاق التجريبي للقنصلية العامة في جدة.",time:"توقيت المدينة المنورة"}}},ae:{regions:{"أبوظبي":["أبوظبي","العين"],"دبي والإمارات الشمالية":["دبي","الشارقة"]},missions:{"أبوظبي":{name:"سفارة جمهورية مصر العربية في أبوظبي",scope:"تخدم إمارة أبوظبي وفق النطاق المعتمد.",time:"توقيت أبوظبي"},"العين":{name:"سفارة جمهورية مصر العربية في أبوظبي",scope:"العين ضمن نطاق البعثة المحددة تجريبيًا.",time:"توقيت العين"},"دبي":{name:"القنصلية العامة لجمهورية مصر العربية في دبي",scope:"تخدم دبي والإمارات الشمالية وفق النطاق المعتمد.",time:"توقيت دبي"},"الشارقة":{name:"القنصلية العامة لجمهورية مصر العربية في دبي",scope:"الشارقة ضمن نطاق القنصلية المحدد تجريبيًا.",time:"توقيت الشارقة"}}},us:{regions:{"الساحل الشرقي":["واشنطن","نيويورك"],"الساحل الغربي":["لوس أنجلوس","سان فرانسيسكو"]},missions:{"واشنطن":{name:"سفارة جمهورية مصر العربية في واشنطن",scope:"تظهر الولاية والبعثة المختصة بعد اعتماد خريطة الاختصاص.",time:"التوقيت الشرقي"},"نيويورك":{name:"القنصلية العامة لجمهورية مصر العربية في نيويورك",scope:"نطاق تجريبي يحتاج اعتمادًا رسميًا.",time:"التوقيت الشرقي"},"لوس أنجلوس":{name:"القنصلية العامة لجمهورية مصر العربية في لوس أنجلوس",scope:"نطاق تجريبي يحتاج اعتمادًا رسميًا.",time:"توقيت المحيط الهادئ"},"سان فرانسيسكو":{name:"الجهة القنصلية المختصة بالساحل الغربي",scope:"تحدد البعثة رسميًا وفق الولاية والرمز البريدي.",time:"توقيت المحيط الهادئ"}}},it:{regions:{"وسط إيطاليا":["روما","فلورنسا"],"شمال إيطاليا":["ميلانو","تورينو"]},missions:{"روما":{name:"سفارة جمهورية مصر العربية في روما",scope:"تخدم روما ومناطق الاختصاص المعتمدة.",time:"توقيت روما"},"فلورنسا":{name:"الجهة القنصلية المختصة بوسط إيطاليا",scope:"تحدد البعثة رسميًا وفق المدينة.",time:"توقيت وسط أوروبا"},"ميلانو":{name:"القنصلية العامة لجمهورية مصر العربية في ميلانو",scope:"نطاق تجريبي يحتاج اعتمادًا رسميًا.",time:"توقيت ميلانو"},"تورينو":{name:"القنصلية العامة لجمهورية مصر العربية في ميلانو",scope:"تورينو ضمن النطاق التجريبي للقنصلية.",time:"توقيت تورينو"}}}};
+    const worldLocations=window.WORLD_LOCATIONS||[],countryNames=new Intl.DisplayNames(['ar'],{type:'region'});
+    const countryLabel=country=>{try{return countryNames.of(country.code)||country.name}catch{return country.name}};
+    const countryByCode=code=>worldLocations.find(country=>country.code===code);
+    const cityLabel=city=>city.ar||city.name;
+    const countryOptions=worldLocations.map(country=>`<option value="${country.code}">${countryLabel(country)}</option>`).join('');
+    const genericCountryIds=['investorCountry','confCountry','orgCountry','profileCountry','emergencyCountry'];
+    genericCountryIds.forEach(id=>{const select=document.getElementById(id);if(select){select.innerHTML=countryOptions;select.value='SA';}});
+    function bindCityInput(countryId,cityId,defaultCity=''){
+      const country=document.getElementById(countryId),input=document.getElementById(cityId);if(!country||!input)return;
+      const list=document.createElement('datalist');list.id=`${cityId}Options`;document.body.appendChild(list);input.setAttribute('list',list.id);
+      const refresh=()=>{const record=countryByCode(country.value);list.innerHTML=(record?.cities||[]).map(city=>`<option value="${cityLabel(city)}">${city.name}</option>`).join('');if(!input.value&&record?.cities?.length)input.value=cityLabel(record.cities[0]);};
+      country.addEventListener('change',()=>{input.value='';refresh();});if(defaultCity)input.value=defaultCity;refresh();
+    }
+    bindCityInput('orgCountry','orgCity');bindCityInput('profileCountry','profileCity','الرياض');bindCityInput('emergencyCountry','emergencyCity');
     const missionCountry=document.getElementById('missionCountry'),missionRegion=document.getElementById('missionRegion'),missionCity=document.getElementById('missionCity');
-    function fillOptions(select,items){select.innerHTML=items.map(item=>`<option>${item}</option>`).join('');}
-    function updateMission(){const country=missionData[missionCountry.value],mission=country.missions[missionCity.value];if(!mission)return;document.getElementById('missionName').textContent=mission.name;document.getElementById('missionScope').textContent=mission.scope;document.getElementById('missionTime').textContent=mission.time;}
-    function updateCities(){const country=missionData[missionCountry.value];fillOptions(missionCity,country.regions[missionRegion.value]);updateMission();}
-    function updateRegions(){const country=missionData[missionCountry.value];fillOptions(missionRegion,Object.keys(country.regions));updateCities();}
+    missionCountry.innerHTML=countryOptions;missionCountry.value='SA';
+    function fillOptions(select,items){select.innerHTML=items.map(item=>typeof item==='string'?`<option>${item}</option>`:`<option value="${item.value}">${item.label}</option>`).join('');}
+    function updateMission(){
+      const verified=missionData[missionCountry.value.toLowerCase()],mission=verified?.missions?.[missionCity.value],country=countryByCode(missionCountry.value);
+      if(mission){document.getElementById('missionName').textContent=mission.name;document.getElementById('missionScope').textContent=mission.scope;document.getElementById('missionTime').textContent=mission.time;return;}
+      document.getElementById('missionName').textContent='بيانات البعثة تحتاج اعتمادًا رسميًا';
+      document.getElementById('missionScope').textContent=`تم إدراج ${country?countryLabel(country):'الدولة'} ومدينة ${missionCity.value||'غير محددة'} في دليل المواقع، لكن لم تُعتمد بعد البعثة المصرية المختصة أو نطاقها الجغرافي.`;
+      document.getElementById('missionTime').textContent='بانتظار اعتماد سجل البعثات';
+    }
+    function updateCities(){
+      const verified=missionData[missionCountry.value.toLowerCase()],country=countryByCode(missionCountry.value);
+      const cities=verified?(verified.regions[missionRegion.value]||[]):(country?.cities||[]).map(city=>cityLabel(city));fillOptions(missionCity,cities);updateMission();
+    }
+    function updateRegions(){
+      const verified=missionData[missionCountry.value.toLowerCase()];fillOptions(missionRegion,verified?Object.keys(verified.regions):['المدن الرئيسية']);updateCities();
+    }
     missionCountry.addEventListener('change',updateRegions);missionRegion.addEventListener('change',updateCities);missionCity.addEventListener('change',updateMission);updateRegions();
     const requestSubjects={contact:{label:'التواصل',question:'ما قناة التواصل التي تبحث عنها؟',items:['الهاتف','الموقع الرسمي','البريد الإلكتروني','موعد وساعات العمل']},transaction:{label:'الوصول إلى معاملة',question:'حدد موضوع المعاملة',items:['جواز أو وثيقة سفر','توثيق أو تصديق','توكيل أو أحوال مدنية','تأشيرة أو دخول مصر']},complaint:{label:'شكوى',question:'ما موضوع الشكوى؟',items:['تعذر التواصل','بيانات اتصال غير صحيحة','تأخر الرد','جودة التعامل أو الخدمة']},emergency:{label:'مساعدة عاجلة',question:'حدد نوع الحالة العاجلة',items:['حادث أو خطر مباشر','احتجاز أو مشكلة قانونية عاجلة','وفاة أو حالة إنسانية','فقد وثيقة أثناء السفر']},suggestion:{label:'اقتراح أو ملاحظة',question:'ما مجال الاقتراح؟',items:['تحسين خدمة','تحسين قنوات التواصل','تصحيح بيانات','اقتراح جديد']},general:{label:'استفسار عام',question:'ما موضوع الاستفسار؟',items:['خدمات قنصلية','جهة الاختصاص','مواعيد وعطلات','موضوع آخر']}};
     const requestTypeButtons=[...document.querySelectorAll('[data-request-type]')],subjectPanel=document.getElementById('requestSubjectPanel'),subjectOptions=document.getElementById('requestSubjectOptions'),requestSummary=document.getElementById('requestSummary');let selectedRequestLabel='';

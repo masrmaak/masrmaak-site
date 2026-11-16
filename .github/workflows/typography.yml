@@ -1,0 +1,16 @@
+name: Typography accessibility
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  minimum-readable-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check minimum readable font size
+        run: bash scripts/check-typography.sh
